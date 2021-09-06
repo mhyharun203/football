@@ -30,12 +30,18 @@ $data = json_decode($content, true);
 
 ?>
 
-<table border=1
+<table border=1>
+    <tr>
+        <th>Platz</th>
+    </tr>
+
+
 <?php
 foreach ($data as $item)  { ?>
     <tr>
+
         <td><?php echo $item['position']; ?></td>
-        <td><?php echo $item['name']; ?></td>
+        <td><a href="test2.php?club=<?php echo $item['name']; ?>"><?php echo $item['name']; ?></a></td>
     </tr>
 <?php } ?>
 </table>
