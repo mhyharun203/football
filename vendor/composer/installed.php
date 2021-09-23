@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'ae3170929e11d9b16369a98469a003c1acf3a091',
+        'reference' => '193e070560be5c1f3cf9fdf1d78aa97b9b4be6b3',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'ae3170929e11d9b16369a98469a003c1acf3a091',
+            'reference' => '193e070560be5c1f3cf9fdf1d78aa97b9b4be6b3',
             'dev_requirement' => false,
         ),
         'doctrine/instantiator' => array(
@@ -95,12 +95,12 @@
             'dev_requirement' => true,
         ),
         'phpspec/prophecy' => array(
-            'pretty_version' => '1.13.0',
-            'version' => '1.13.0.0',
+            'pretty_version' => '1.14.0',
+            'version' => '1.14.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpspec/prophecy',
             'aliases' => array(),
-            'reference' => 'be1996ed8adc35c3fd795488a653f4b518be70ea',
+            'reference' => 'd86dfc2e2a3cd366cee475e52c6bb3bbc371aa0e',
             'dev_requirement' => true,
         ),
         'phpunit/php-code-coverage' => array(
@@ -165,7 +165,7 @@
             'aliases' => array(
                 0 => '9999999-dev',
             ),
-            'reference' => '05f521f12b6e072bc77aaa78191907987d0454ff',
+            'reference' => '8cebf1673eccd7e6552732142039c147c1023214',
             'dev_requirement' => true,
         ),
         'sebastian/cli-parser' => array(
@@ -312,15 +312,6 @@
             'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
             'dev_requirement' => true,
         ),
-        'smarty/smarty' => array(
-            'pretty_version' => 'v3.1.39',
-            'version' => '3.1.39.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../smarty/smarty',
-            'aliases' => array(),
-            'reference' => 'e27da524f7bcd7361e3ea5cdfa99c4378a7b5419',
-            'dev_requirement' => false,
-        ),
         'symfony/polyfill-ctype' => array(
             'pretty_version' => 'v1.23.0',
             'version' => '1.23.0.0',
@@ -328,7 +319,16 @@
             'install_path' => __DIR__ . '/../symfony/polyfill-ctype',
             'aliases' => array(),
             'reference' => '46cd95797e9df938fdd2b03693b5fca5e64b01ce',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
+        ),
+        'symfony/polyfill-mbstring' => array(
+            'pretty_version' => 'v1.23.1',
+            'version' => '1.23.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-mbstring',
+            'aliases' => array(),
+            'reference' => '9174a3d80210dca8daa7f31fec659150bbeabfc6',
+            'dev_requirement' => false,
         ),
         'theseer/tokenizer' => array(
             'pretty_version' => '1.2.1',
@@ -338,6 +338,15 @@
             'aliases' => array(),
             'reference' => '34a41e998c2183e22995f158c581e7b5e755ab9e',
             'dev_requirement' => true,
+        ),
+        'twig/twig' => array(
+            'pretty_version' => 'v3.3.3',
+            'version' => '3.3.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twig/twig',
+            'aliases' => array(),
+            'reference' => 'a27fa056df8a6384316288ca8b0fa3a35fdeb569',
+            'dev_requirement' => false,
         ),
         'webmozart/assert' => array(
             'pretty_version' => '1.10.0',

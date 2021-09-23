@@ -3,29 +3,49 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-class TableApi
+use App\Core\Api;
+use App\Model\DTO\TableDataTransferObject;
+use App\Model\Mapper\TableMapper;
+use App\Model\TableRepository;
+use App\Model\TeamRepository;
+
+
+class TableController
 {
+private TableRepository $tableRepository;
+public function __construct(TableRepository $tableRepository){
+    $this->tableRepository = $tableRepository;
+}
 
-    public function getPlStandings()
+    public function tableAction()
     {
-        $uri = 'http://api.football-data.org/v2/competitions/PL/standings';
-        $reqPrefs['http']['method'] = 'GET';
-        $reqPrefs['http']['header'] = 'X-Auth-Token:3c03798f19d54d6e8d641691763d899f';
-        $stream_context = stream_context_create($reqPrefs);
-        $response = file_get_contents($uri, false, $stream_context);
-        $matches = json_decode($response, true);
 
-        return $this->getTableContent($matches['standings'][0]['table']);
+
+
+        $rawTable = $this->tableRepository->readTable();
+        $table = $this->getTableContent($rawTable);
+        foreach ($table as $endTable) {
+            echo $endTable["position"];
+            echo "  ";
+            echo $endTable["name"];
+            echo  "<br>";
+        }
+
 
     }
 
-    private function getTableContent($table): array
+    /**
+     * @param TableDataTransferObject [] $table
+     * @return array
+     */
+    public function getTableContent(array $table)
     {
 
-        $teamFinalArray = [];
+
         foreach ($table as $team) {
-            $teamName = $team['team']['name'];
-            $teamPosition = $team['position'];
+
+            $teamName = $team->getName();
+            $teamPosition = $team->getPosition();
             $teamFinalArray[] = ['name' => $teamName,
                 'position' => $teamPosition,
             ];
@@ -33,7 +53,7 @@ class TableApi
 
         }
         return $teamFinalArray;
-
     }
-}
 
+
+}
