@@ -26,7 +26,7 @@ class TableRepository
     public function saveTable($teamFinalArray)
     {
 
-        $json = json_encode($teamFinalArray);
+        $json = json_encode($teamFinalArray, JSON_PRETTY_PRINT);
         file_put_contents("football.json", $json);
         return $teamFinalArray;
     }

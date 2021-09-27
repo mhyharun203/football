@@ -19,11 +19,29 @@ echo $twig->render('index.twig', ['name' => 'John Doe',
 
 
 
-$b = new \App\Model\Mapper\TableMapper();
-$a = new \App\Model\TableRepository($b);
+$tableMapper = new \App\Model\Mapper\TableMapper();
+$tableRepository = new \App\Model\TableRepository($tableMapper);
+$tableController = new TableController($tableRepository);
 
-$c = new TableController($a);
-$c->tableAction();
+$tableController->tableAction();
+$tableArray = ($tableController->tableAction());
+
+$teamMapper = new \App\Model\Mapper\TeamDetailsMapper();
+$teamRepository = new \App\Model\TeamRepository($teamMapper);
+$teamDetailController = new \App\Controller\TeamDetailController($teamRepository );
+//$teamDetailController->teamDetailAction();
+
+
+
+
+    if (!isset($_GET['team'])) {
+        echo $twig->render('table.twig', ["tableArray" => $tableArray]);
+    }else {
+        foreach ($tableArray as $finalTableArray)
+            if ($_GET['team'] === $finalTableArray['name']) {
+                echo $finalTableArray['name'];
+            }
+    }
 
 
 

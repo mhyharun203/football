@@ -15,12 +15,12 @@ class TableMapper
     public function mapToDTO(array $table): array
     {
         $arraytableDTO = [];
-        foreach ($table as $column ) {
 
+        foreach ($table['standings'][0]['table'] as $column ) {
 
             $tableDTO = new TableDataTransferObject();
 
-            $tableDTO->setName($column['name']);
+            $tableDTO->setName($column['team']['name']);
             $tableDTO->setPosition($column['position']);
             $arraytableDTO[] = $tableDTO;
         }

@@ -2,45 +2,52 @@
 
 namespace App\Controller;
 
-use App\Core\Api;
+use App\Model\DTO\TeamDataTransferObject;
 use App\Model\TeamRepository;
 
 class TeamDetailController
 
 {
-    private API $apiInterface;
+    private TeamRepository $teamRepository;
 
 
-    public function __construct(Api $apiInterface)
+    public function __construct(TeamRepository $teamRepository)
     {
-        $this->apiInterface = $apiInterface;
-    }
-
-    public function teamDetailAction()
-    {
-        $this->apiInterface->getTeams();
-        $allTeamInformation = $this->apiInterface->getTeams();
-        $allTeamInformationDisplay = $this->getOneTeamDetail($allTeamInformation);
-        $repository = new TeamRepository();
-        $repository->saveTeamInformation($allTeamInformationDisplay);
+        $this->teamRepository = $teamRepository;
     }
 
 
-    public function getOneTeamDetail($allTeamInformationDisplay)
+
+
+    public function teamDetailAction(): array
     {
 
-        $teamFinalArray = [];
-        foreach ($allTeamInformationDisplay['teams'] as $team) {
+       $rawTeamDetailInformation = $this->teamRepository->readTeamInformation();
+        return $this->getOneTeamDetail($rawTeamDetailInformation);
 
-            $teamName = $team['name'];
-            $teamShortName = $team['shortName'];
-            $teamTla = $team['tla'];
-            $teamAddress = $team['address'];
-            $teamPhone = $team['phone'];
-            $teamWebsite = $team['website'];
-            $teamEmail = $team['email'];
-            $teamClubColors = $team['clubColors'];
-            $teamVenue = $team['venue'];
+    }
+
+
+
+    /**
+     * @param TeamDataTransferObject [] $teamInfo
+     * @return array
+     */
+
+    public function getOneTeamDetail(array $teamInfo)
+    {
+
+        foreach ($teamInfo as $team) {
+
+            $teamName = $team->getTeamName();
+            $teamShortName = $team->getTeamShortName();
+            $teamTla = $team->getTeamTla();
+            $teamAddress = $team->getTeamAddress();
+            $teamPhone = $team->getTeamClubColors();
+            $teamWebsite = $team->getTeamWebsite();
+            $teamEmail = $team->getTeamEmail();
+            $teamClubColors = $team->getTeamClubColors();
+            $teamVenue = $team->getTeamVenue();
 
             $teamFinalArray[] =
                 [
