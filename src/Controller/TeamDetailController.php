@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\DTO\TeamDataTransferObject;
 use App\Model\TeamRepository;
+use App\TwigView;
 
 class TeamDetailController
 
@@ -17,16 +18,22 @@ class TeamDetailController
     }
 
 
-
-
     public function teamDetailAction(): array
     {
 
-       $rawTeamDetailInformation = $this->teamRepository->readTeamInformation();
-        return $this->getOneTeamDetail($rawTeamDetailInformation);
+        $rawTeamDetailInformation = $this->teamRepository->readTeamInformation();
+        return $this->getTeamsDetail($rawTeamDetailInformation);
 
     }
 
+    public function oneTeamDetailAction(string $team) : void
+    {
+        $rawTeamDetailInformation = $this->teamRepository->getOneTeamByName($team);
+
+        $clickedTeam = $this->getTeamsDetail([$rawTeamDetailInformation]);
+        $b = new TwigView();
+        $b->render('teamDetail.twig', 'teamDTO', $clickedTeam);
+    }
 
 
     /**
@@ -34,18 +41,15 @@ class TeamDetailController
      * @return array
      */
 
-    public function getOneTeamDetail(array $teamInfo)
+    private function getTeamsDetail(array $teamInfo)
     {
-
         foreach ($teamInfo as $team) {
 
             $teamName = $team->getTeamName();
             $teamShortName = $team->getTeamShortName();
             $teamTla = $team->getTeamTla();
             $teamAddress = $team->getTeamAddress();
-            $teamPhone = $team->getTeamClubColors();
             $teamWebsite = $team->getTeamWebsite();
-            $teamEmail = $team->getTeamEmail();
             $teamClubColors = $team->getTeamClubColors();
             $teamVenue = $team->getTeamVenue();
 
@@ -55,9 +59,7 @@ class TeamDetailController
                     'shortname' => $teamShortName,
                     'tla' => $teamTla,
                     'adress' => $teamAddress,
-                    'phone' => $teamPhone,
                     'website' => $teamWebsite,
-                    'email' => $teamEmail,
                     'clubColors' => $teamClubColors,
                     'venue' => $teamVenue
 

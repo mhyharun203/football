@@ -13,7 +13,7 @@ class TeamDetailsMapper
 
     /**
      * @param array $finalTeamInfo
-     * @return TeamDataTransferObject []
+     * @return TeamDataTransferObject[]
      */
     public function mapToDTO(array $teamInfo): array
     {
@@ -30,7 +30,6 @@ class TeamDetailsMapper
             $teamDTO->setTeamTla($finalTeamInfo['tla']);
             $teamDTO->setTeamAddress($finalTeamInfo['adress']);
             $teamDTO->setTeamWebsite($finalTeamInfo['website']);
-            $teamDTO->setTeamEmail($finalTeamInfo['email']);
             $teamDTO->setTeamClubColors($finalTeamInfo['clubColors']);
             $teamDTO->setTeamVenue($finalTeamInfo['venue']);
 

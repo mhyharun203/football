@@ -11,9 +11,7 @@ class TeamDataTransferObject
     private string $teamShortName;
     private string $teamTla;
     private string $teamAddress;
-    private string $teamPhone;
     private string $teamWebsite;
-    private string $teamEmail;
     private string $teamClubColors;
     private string $teamVenue;
 
@@ -66,16 +64,6 @@ class TeamDataTransferObject
     }
 
 
-    public function getTeamPhone(): string
-    {
-        return $this->teamPhone;
-    }
-
-
-    public function setTeamPhone(string $teamPhone): void
-    {
-        $this->teamPhone = $teamPhone;
-    }
 
 
     public function getTeamWebsite(): string
@@ -90,16 +78,7 @@ class TeamDataTransferObject
     }
 
 
-    public function getTeamEmail(): string
-    {
-        return $this->teamEmail;
-    }
 
-
-    public function setTeamEmail(string $teamEmail): void
-    {
-        $this->teamEmail = $teamEmail;
-    }
 
 
     public function getTeamClubColors(): string

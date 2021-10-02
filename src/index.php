@@ -9,13 +9,11 @@ require __DIR__ . '/../vendor/autoload.php';
 use App\Model\DTO\TableDataTransferObject;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
+use App\TwigView;
 
 
 $loader = new \Twig\Loader\FilesystemLoader('View');
 $twig = new \Twig\Environment($loader);
-
-echo $twig->render('index.twig', ['name' => 'John Doe',
-    'occupation' => 'gardener']);
 
 
 
@@ -28,20 +26,18 @@ $tableArray = ($tableController->tableAction());
 
 $teamMapper = new \App\Model\Mapper\TeamDetailsMapper();
 $teamRepository = new \App\Model\TeamRepository($teamMapper);
-$teamDetailController = new \App\Controller\TeamDetailController($teamRepository );
-//$teamDetailController->teamDetailAction();
+$teamDetailController = new \App\Controller\TeamDetailController($teamRepository);
+$teamDetailController->teamDetailAction();
+$teamArray = ($teamDetailController->teamDetailAction());
+$teamArray = array($teamArray);
 
 
+if (!isset($_GET['team'])) {
+    echo $twig->render('table.twig', ["tableArray" => $tableArray]);
+} else {
+$a = $teamDetailController->oneTeamDetailAction($_GET['team']);
 
-
-    if (!isset($_GET['team'])) {
-        echo $twig->render('table.twig', ["tableArray" => $tableArray]);
-    }else {
-        foreach ($tableArray as $finalTableArray)
-            if ($_GET['team'] === $finalTableArray['name']) {
-                echo $finalTableArray['name'];
-            }
-    }
+}
 
 
 

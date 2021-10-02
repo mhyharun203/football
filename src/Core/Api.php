@@ -32,8 +32,6 @@ class Api implements ApiInterface
 
     }
 
-
-
 }
 
 $a = new Api();

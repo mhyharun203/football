@@ -8,7 +8,7 @@ use App\Model\DTO\TableDataTransferObject;
 use App\Model\Mapper\TableMapper;
 
 
-set_include_path(__DIR__ . '/../../src');
+
 
 class TableRepository
 
@@ -19,7 +19,6 @@ class TableRepository
     {
         $this->tableMapper = $tableMapper;
 
-
     }
 
 
@@ -27,7 +26,7 @@ class TableRepository
     {
 
         $json = json_encode($teamFinalArray, JSON_PRETTY_PRINT);
-        file_put_contents("football.json", $json);
+        file_put_contents( "football.json", $json);
         return $teamFinalArray;
     }
 
