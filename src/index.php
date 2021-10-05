@@ -6,37 +6,21 @@ use App\Controller\TableController;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use App\Model\DTO\TableDataTransferObject;
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
-use App\TwigView;
-
-
-$loader = new \Twig\Loader\FilesystemLoader('View');
-$twig = new \Twig\Environment($loader);
-
-
-
-$tableMapper = new \App\Model\Mapper\TableMapper();
-$tableRepository = new \App\Model\TableRepository($tableMapper);
-$tableController = new TableController($tableRepository);
-
-$tableController->tableAction();
-$tableArray = ($tableController->tableAction());
-
-$teamMapper = new \App\Model\Mapper\TeamDetailsMapper();
-$teamRepository = new \App\Model\TeamRepository($teamMapper);
-$teamDetailController = new \App\Controller\TeamDetailController($teamRepository);
-$teamDetailController->teamDetailAction();
-$teamArray = ($teamDetailController->teamDetailAction());
-$teamArray = array($teamArray);
-
+$twig = new \App\TwigView();
 
 if (!isset($_GET['team'])) {
-    echo $twig->render('table.twig', ["tableArray" => $tableArray]);
+    $tableMapper = new \App\Model\Mapper\TableMapper();
+    $tableRepository = new \App\Model\TableRepository($tableMapper);
+    $tableController = new TableController($tableRepository, $twig);
+    $tableController->tableAction();
 } else {
-$a = $teamDetailController->oneTeamDetailAction($_GET['team']);
-
+    $teamMapper = new \App\Model\Mapper\TeamDetailsMapper();
+    $teamRepository = new \App\Model\TeamRepository($teamMapper);
+    $teamDetailController = new \App\Controller\TeamDetailController($teamRepository, $twig);
+    $teamDetailController->teamDetailAction();
+    $teamArray = ($teamDetailController->teamDetailAction());
+    $teamArray = array($teamArray);
+    $teamDetailController->oneTeamDetailAction($_GET['team']);
 }
 
 

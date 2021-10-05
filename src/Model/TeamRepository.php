@@ -1,7 +1,6 @@
 <?php
 declare(strict_types=1);
 
-
 namespace App\Model;
 
 use App\Core\Api;
@@ -12,7 +11,6 @@ use App\Table;
 
 set_include_path(__DIR__ . '/../../src');
 
-
 class TeamRepository
 {
     private TeamDetailsMapper $teamDetailsMapper;
@@ -20,26 +18,23 @@ class TeamRepository
     public function __construct(TeamDetailsMapper $teamDetailsMapper)
     {
         $this->teamDetailsMapper = $teamDetailsMapper;
-
     }
 
     public function saveTeamInformation($teamFinalArray)
     {
 
-
         $json = json_encode($teamFinalArray, JSON_PRETTY_PRINT);
-        file_put_contents("teamDetail.json", $json);
+        file_put_contents(__DIR__ . '/../teamDetail.json', $json);
         return $teamFinalArray;
     }
 
     public function readTeamInformation()
     {
 
-        $teamDetail = file_get_contents('teamDetail.json', true);
+        $teamDetail = file_get_contents(__DIR__ . '/../teamDetail.json', true);
         $finalTable = json_decode($teamDetail, true);
         return $this->teamDetailsMapper->mapToDTO($finalTable);
     }
-
 
     /**
      * @param string $name
@@ -56,7 +51,6 @@ class TeamRepository
             }
         }
         return $teamDataTransferObject;
-
     }
 }
 

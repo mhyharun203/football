@@ -5,39 +5,63 @@ namespace App\Controller;
 use App\Model\DTO\TeamDataTransferObject;
 use App\Model\TeamRepository;
 use App\TwigView;
+use App\ViewInterface;
 
 class TeamDetailController
 
 {
     private TeamRepository $teamRepository;
+    /**
+     * @var \App\ViewInterface
+     */
+    private ViewInterface $view;
 
-
-    public function __construct(TeamRepository $teamRepository)
+    /**
+     * @param \App\Model\TeamRepository $teamRepository
+     * @param \App\ViewInterface $view
+     */
+    public function __construct(
+        TeamRepository $teamRepository,
+        ViewInterface  $view
+    )
     {
         $this->teamRepository = $teamRepository;
+        $this->view = $view;
     }
 
-
+    /**
+     * @return array
+     */
     public function teamDetailAction(): array
     {
-
         $rawTeamDetailInformation = $this->teamRepository->readTeamInformation();
-        return $this->getTeamsDetail($rawTeamDetailInformation);
 
+        return $this->getTeamsDetail($rawTeamDetailInformation);
     }
 
-    public function oneTeamDetailAction(string $team) : void
+    /**
+     * @param string $team
+     *
+     * @return void
+     *
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function oneTeamDetailAction(string $team): void
     {
         $rawTeamDetailInformation = $this->teamRepository->getOneTeamByName($team);
 
         $clickedTeam = $this->getTeamsDetail([$rawTeamDetailInformation]);
-        $b = new TwigView();
-        $b->render('teamDetail.twig', 'teamDTO', $clickedTeam);
-    }
 
+        $this->view->render('teamDetail.twig', [
+            'teamDTO' => $clickedTeam,
+        ]);
+    }
 
     /**
      * @param TeamDataTransferObject [] $teamInfo
+     *
      * @return array
      */
 
@@ -63,9 +87,7 @@ class TeamDetailController
                     'clubColors' => $teamClubColors,
                     'venue' => $teamVenue
 
-
                 ];
-
         }
         return $teamFinalArray;
     }

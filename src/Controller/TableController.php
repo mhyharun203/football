@@ -5,21 +5,39 @@ namespace App\Controller;
 
 use App\Model\DTO\TableDataTransferObject;
 use App\Model\TableRepository;
-
+use App\ViewInterface;
 
 class TableController
 {
     private TableRepository $tableRepository;
+    /**
+     * @var \App\ViewInterface
+     */
+    private ViewInterface $view;
 
-    public function __construct(TableRepository $tableRepository)
+    /**
+     * @param \App\Model\TableRepository $tableRepository
+     * @param \App\ViewInterface $view
+     */
+    public function __construct(
+        TableRepository $tableRepository,
+        ViewInterface $view
+    )
     {
         $this->tableRepository = $tableRepository;
+        $this->view = $view;
     }
 
-    public function tableAction(): array
+    /**
+     * @return void
+     */
+    public function tableAction(): void
     {
         $rawTable = $this->tableRepository->readTable();
-        return $this->getTableContent($rawTable);
+
+        $this->view->render('table.twig', [
+            'tableArray' => $this->getTableContent($rawTable)
+        ]);
     }
 
 

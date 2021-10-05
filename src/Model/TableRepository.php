@@ -3,12 +3,8 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-use App\Core\Api;
 use App\Model\DTO\TableDataTransferObject;
 use App\Model\Mapper\TableMapper;
-
-
-
 
 class TableRepository
 
@@ -18,15 +14,13 @@ class TableRepository
     public function __construct(TableMapper $tableMapper)
     {
         $this->tableMapper = $tableMapper;
-
     }
-
 
     public function saveTable($teamFinalArray)
     {
 
         $json = json_encode($teamFinalArray, JSON_PRETTY_PRINT);
-        file_put_contents( "football.json", $json);
+        file_put_contents(__DIR__ . '/../football.json', $json);
         return $teamFinalArray;
     }
 
@@ -37,7 +31,7 @@ class TableRepository
     public function readTable(): array
     {
 
-        $table = file_get_contents('football.json', true);
+        $table = file_get_contents(__DIR__ . '/../football.json', true);
         $finalTable = json_decode($table, true);
         return $this->tableMapper->mapToDTO($finalTable);
     }
