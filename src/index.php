@@ -7,6 +7,7 @@ use App\Controller\TableController;
 require __DIR__ . '/../vendor/autoload.php';
 
 $twig = new \App\TwigView();
+$twig->init();
 
 if (!isset($_GET['team'])) {
     $tableMapper = new \App\Model\Mapper\TableMapper();
