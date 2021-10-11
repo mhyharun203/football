@@ -8,8 +8,8 @@ use App\Model\DTO\TeamDataTransferObject;
 use App\Model\Mapper\TableMapper;
 use App\Model\Mapper\TeamDetailsMapper;
 use App\Table;
+use PhpParser\Node\Expr\Array_;
 
-set_include_path(__DIR__ . '/../../src');
 
 class TeamRepository
 {
@@ -25,13 +25,13 @@ class TeamRepository
 
         $json = json_encode($teamFinalArray, JSON_PRETTY_PRINT);
         file_put_contents(__DIR__ . '/../teamDetail.json', $json);
-        return $teamFinalArray;
+
     }
 
-    public function readTeamInformation()
+    public function readTeamInformation() :array
     {
 
-        $teamDetail = file_get_contents(__DIR__ . '/../teamDetail.json', true);
+        $teamDetail = file_get_contents(__DIR__ . '/../teamDetail.json');
         $finalTable = json_decode($teamDetail, true);
         return $this->teamDetailsMapper->mapToDTO($finalTable);
     }

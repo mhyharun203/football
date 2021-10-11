@@ -10,7 +10,6 @@ use App\Model\TableRepository;
 require __DIR__ . '/../vendor/autoload.php';
 
 
-
 class Table
 {
 
@@ -37,6 +36,7 @@ class Table
 
 
 }
+
 $c = new \App\Core\Api();
 $a = new \App\Table($c);
 $a->triggerApi();

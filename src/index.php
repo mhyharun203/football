@@ -39,6 +39,3 @@ if (!isset($_GET['team'])) {
 
 
 
-
-
-
