@@ -20,7 +20,7 @@ class TableRepository
     {
 
         $json = json_encode($teamFinalArray, JSON_PRETTY_PRINT);
-        file_put_contents(__DIR__ . '/../football.json', $json);
+        file_put_contents(__DIR__ . '/../table.json', $json);
         return $teamFinalArray;
     }
 
@@ -31,7 +31,7 @@ class TableRepository
     public function readTable(): array
     {
 
-        $table = file_get_contents(__DIR__ . '/../football.json', true);
+        $table = file_get_contents(__DIR__ . '/../table.json', true);
         $finalTable = json_decode($table, true);
         return $this->tableMapper->mapToDTO($finalTable);
     }

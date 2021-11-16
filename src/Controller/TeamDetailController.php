@@ -39,15 +39,8 @@ class TeamDetailController
         return $this->getTeamsDetail($rawTeamDetailInformation);
     }
 
-    /**
-     * @param string $team
-     *
-     * @return void
-     *
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
+
+
     public function oneTeamDetailAction(string $team): void
     {
         $rawTeamDetailInformation = $this->teamRepository->getOneTeamByName($team);
@@ -59,11 +52,7 @@ class TeamDetailController
         ]);
     }
 
-    /**
-     * @param TeamDataTransferObject [] $teamInfo
-     *
-     * @return array
-     */
+
 
     private function getTeamsDetail(array $teamInfo)
     {
