@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Title of the document</title>
+        <style>
+
+            th {
+                background-color: #4287f5;
+                color: white;
+            }
+
+            th,
+            td {
+                width: auto;
+                border: 1px solid black;
+                padding: 5px;
+                text-align: left;
+            }
+
+            h2 {
+                color: #4287f5;
+            }
+        </style>
+    </head>
+
+
+    <h1>STANDINGS KURWA </h1>
+
+
+
+    <table style=" border-collapse: separate;
+        border-spacing: 0.05cm">
+        <tr>
+            <th>position</th>
+            <th>Team</th>
+            <th>Points</th>
+            <th>Wins</th>
+            <th>Draws</th>
+            <th>Loses</th>
+
+
+        </tr>
+        {% for teams in tableArray %}
+
+
+            <tr>
+
+                <td>   {{ teams['position'] }}</td>
+                <td><a href='../index.php?leaguePL?team={{ teams['name'] }}'>{{ teams['name'] }}</a></td>
+                <td>{{ teams['points'] }}</td>
+                <td>{{ teams['wins'] }}</td>
+                <td>{{ teams['draws'] }}</td>
+                <td>{{ teams['loses'] }}</td>
+
+            </tr>
+        {% endfor %}
+    </table>

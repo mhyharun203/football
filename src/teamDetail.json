@@ -1,0 +1,222 @@
+[
+  {
+    "name": "Arsenal FC",
+    "shortname": "Arsenal",
+    "tla": "ARS",
+    "adress": "75 Drayton Park London N5 1BU",
+    "phone": "+44 (020) 76195003",
+    "website": "http:\/\/www.arsenal.com",
+    "email": "info@arsenal.co.uk",
+    "clubColors": "Red \/ White",
+    "venue": "Emirates Stadium"
+  },
+  {
+    "name": "Aston Villa FC",
+    "shortname": "Aston Villa",
+    "tla": "AST",
+    "adress": "Villa Park Birmingham B6 6HE",
+    "phone": "+44 (0121) 3272299",
+    "website": "http:\/\/www.avfc.co.uk",
+    "email": "info@astonvilla.com",
+    "clubColors": "Claret \/ Sky Blue",
+    "venue": "Villa Park"
+  },
+  {
+    "name": "Chelsea FC",
+    "shortname": "Chelsea",
+    "tla": "CHE",
+    "adress": "Fulham Road London SW6 1HS",
+    "phone": "+44 (0871) 9841955",
+    "website": "http:\/\/www.chelseafc.com",
+    "email": "info@chelseafc.com",
+    "clubColors": "Royal Blue \/ White",
+    "venue": "Stamford Bridge"
+  },
+  {
+    "name": "Everton FC",
+    "shortname": "Everton",
+    "tla": "EVE",
+    "adress": "Goodison Park Liverpool L4 4EL",
+    "phone": "+44 (0871) 6631878",
+    "website": "http:\/\/www.evertonfc.com",
+    "email": "everton@evertonfc.com",
+    "clubColors": "Blue \/ White",
+    "venue": "Goodison Park"
+  },
+  {
+    "name": "Liverpool FC",
+    "shortname": "Liverpool",
+    "tla": "LIV",
+    "adress": "Anfield Road Liverpool L4 0TH",
+    "phone": "+44 (0844) 4993000",
+    "website": "http:\/\/www.liverpoolfc.tv",
+    "email": "customercontact@liverpoolfc.tv",
+    "clubColors": "Red \/ White",
+    "venue": "Anfield"
+  },
+  {
+    "name": "Manchester City FC",
+    "shortname": "Man City",
+    "tla": "MCI",
+    "adress": "SportCity Manchester M11 3FF",
+    "phone": "+44 (0870) 0621894",
+    "website": "https:\/\/www.mancity.com",
+    "email": "mancity@mancity.com",
+    "clubColors": "Sky Blue \/ White",
+    "venue": "Etihad Stadium"
+  },
+  {
+    "name": "Manchester United FC",
+    "shortname": "Man United",
+    "tla": "MUN",
+    "adress": "Sir Matt Busby Way Manchester M16 0RA",
+    "phone": "+44 (0161) 8688000",
+    "website": "http:\/\/www.manutd.com",
+    "email": "enquiries@manutd.co.uk",
+    "clubColors": "Red \/ White",
+    "venue": "Old Trafford"
+  },
+  {
+    "name": "Newcastle United FC",
+    "shortname": "Newcastle",
+    "tla": "NEW",
+    "adress": "Sports Direct Arena Newcastle upon Tyne NE1 4ST",
+    "phone": null,
+    "website": "http:\/\/www.nufc.co.uk",
+    "email": "admin@nufc.co.uk",
+    "clubColors": "Black \/ White",
+    "venue": "St. James' Park"
+  },
+  {
+    "name": "Norwich City FC",
+    "shortname": "Norwich",
+    "tla": "NOR",
+    "adress": "Carrow Road Norwich NR1 1JE",
+    "phone": null,
+    "website": "http:\/\/www.canaries.co.uk",
+    "email": "reception@ncfc-canaries.co.uk",
+    "clubColors": "Yellow \/ Green",
+    "venue": "Carrow Road"
+  },
+  {
+    "name": "Tottenham Hotspur FC",
+    "shortname": "Tottenham",
+    "tla": "TOT",
+    "adress": "Bill Nicholson Way, 748 High Road London N17 0AP",
+    "phone": "+44 (0844) 4995000",
+    "website": "http:\/\/www.tottenhamhotspur.com",
+    "email": "customer.care@tottenhamhotspur.com",
+    "clubColors": "Navy Blue \/ White",
+    "venue": "Tottenham Hotspur Stadium"
+  },
+  {
+    "name": "Wolverhampton Wanderers FC",
+    "shortname": "Wolverhampton",
+    "tla": "WOL",
+    "adress": "Waterloo Road Wolverhampton WV1 4QR",
+    "phone": "+44 (0871) 2222220",
+    "website": "http:\/\/www.wolves.co.uk",
+    "email": "info@wolves.co.uk",
+    "clubColors": "Black \/ Gold",
+    "venue": "Molineux Stadium"
+  },
+  {
+    "name": "Burnley FC",
+    "shortname": "Burnley",
+    "tla": "BUR",
+    "adress": "Harry Potts Way Burnley BB10 4BX",
+    "phone": "+44 (0871) 2211882",
+    "website": "http:\/\/www.burnleyfootballclub.com",
+    "email": "info@burnleyfc.com",
+    "clubColors": "Claret \/ Sky Blue",
+    "venue": "Turf Moor"
+  },
+  {
+    "name": "Leicester City FC",
+    "shortname": "Leicester City",
+    "tla": "LEI",
+    "adress": "The Walkers Stadium, Filbert Way Leicester LE2 7FL",
+    "phone": "+44 (0844) 8156000",
+    "website": "http:\/\/www.lcfc.com",
+    "email": null,
+    "clubColors": "Royal Blue \/ White",
+    "venue": "King Power Stadium"
+  },
+  {
+    "name": "Southampton FC",
+    "shortname": "Southampton",
+    "tla": "SOU",
+    "adress": "Britannia Road Southampton SO14 5FP",
+    "phone": null,
+    "website": "http:\/\/www.saintsfc.co.uk",
+    "email": "sfc@saintsfc.co.uk",
+    "clubColors": "Red \/ White \/ Black",
+    "venue": "St. Mary's Stadium"
+  },
+  {
+    "name": "Leeds United FC",
+    "shortname": "Leeds United",
+    "tla": "LEE",
+    "adress": "Elland Road Leeds LS11 0ES",
+    "phone": "+44 (0871) 3341919",
+    "website": "http:\/\/www.leedsunited.com",
+    "email": "reception@leedsunited.com",
+    "clubColors": "White \/ Blue",
+    "venue": "Elland Road"
+  },
+  {
+    "name": "Watford FC",
+    "shortname": "Watford",
+    "tla": "WAT",
+    "adress": "Vicarage Road Watford WD18 0ER",
+    "phone": null,
+    "website": "http:\/\/www.watfordfc.com",
+    "email": "yourvoice@watfordfc.com",
+    "clubColors": "Yellow \/ Black",
+    "venue": "Vicarage Road Stadium"
+  },
+  {
+    "name": "Crystal Palace FC",
+    "shortname": "Crystal Palace",
+    "tla": "CRY",
+    "adress": "Whitehorse Lane London SE25 6PU",
+    "phone": "+44 (020) 87686000",
+    "website": "http:\/\/www.cpfc.co.uk",
+    "email": "info@cpfc.co.uk",
+    "clubColors": "Red \/ Blue",
+    "venue": "Selhurst Park"
+  },
+  {
+    "name": "Brighton & Hove Albion FC",
+    "shortname": "Brighton Hove",
+    "tla": "BHA",
+    "adress": "44 North Road Brighton & Hove BN1 1YR",
+    "phone": "+44 (01273) 878288",
+    "website": "http:\/\/www.seagulls.co.uk",
+    "email": "seagulls@bhafc.co.uk",
+    "clubColors": "Blue \/ White",
+    "venue": "The American Express Community Stadium"
+  },
+  {
+    "name": "Brentford FC",
+    "shortname": "Brentford",
+    "tla": "BRE",
+    "adress": "Braemar Road Brentford TW8 0NT",
+    "phone": null,
+    "website": "http:\/\/www.brentfordfc.co.uk",
+    "email": "enquiries@brentfordfc.co.uk",
+    "clubColors": "Red \/ White \/ Black",
+    "venue": "Griffin Park"
+  },
+  {
+    "name": "West Ham United FC",
+    "shortname": "West Ham",
+    "tla": "WHU",
+    "adress": "Queen Elizabeth Olympic Park, London London E20 2ST",
+    "phone": "+44 (020) 85482794",
+    "website": "http:\/\/www.whufc.com",
+    "email": "yourcomments@westhamunited.co.uk",
+    "clubColors": "Claret \/ Sky Blue",
+    "venue": "London Stadium"
+  }
+]
