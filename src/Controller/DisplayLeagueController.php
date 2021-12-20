@@ -1,17 +1,14 @@
 <?php
-declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Model\DTO\TableDataTransferObject;
 use App\Model\TableRepository;
 use App\ViewInterface;
 
-class TableController
+class DisplayLeagueController implements ControllerInterface
 {
     private TableRepository $tableRepository;
     private ViewInterface $view;
-
 
     public function __construct(
         TableRepository $tableRepository,
@@ -22,31 +19,26 @@ class TableController
         $this->view = $view;
     }
 
-    public function chooseLeague()
-    {
-        $PL = 'Premier League';
-        $BL1 = 'Bundesliga';
-        $this->view->init();
-        $this->view->render('index.twig', ['PL' => $PL, 'BL' => $BL1]);
-    }
 
-    public function PLTableAction(): void
-    {
-        $rawTable = $this->tableRepository->readTable();
-        $this->view->init();
-        $this->view->render('table.twig', [
-            'tableArray' => $this->getTableContent($rawTable)
-        ]);
+    public function render(): void
 
-    }
-
-    public function BLTableAction(): void
     {
-        $rawTable = $this->tableRepository->readBLTable();
-        $this->view->init();
-        $this->view->render('table.twig', [
-            'tableArray' => $this->getTableContent($rawTable)
-        ]);
+        $league = $_GET ['league'];
+        $leagueList = [
+            'BL' => $this->tableRepository->readBlTable(),
+            'PL' => $this->tableRepository->readPlTable()];
+
+
+        foreach ($leagueList as $key => $leagueInfo) {
+            if ($league === $key) {
+                $this->view->init();
+                $this->view->render('table.twig', [
+                    'tableArray' => $this->getTableContent($leagueInfo)
+                ]);
+
+            }
+
+        }
     }
 
 
@@ -72,4 +64,6 @@ class TableController
         }
         return $teamFinalArray;
     }
+
+
 }

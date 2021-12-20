@@ -1,14 +1,14 @@
 
 <table>
-    {% for teams in teamDTO %}
 
-<h1> Teamdetails for: {{ teams['name'] }}</h1>
-             name:  {{ teams['name']   }}  <br>
-             Club Color: {{ teams['clubColors'] }} <br>
-             Venue: {{ teams['venue'] }} <br>
-            Short Name: {{ teams['shortname'] }} <br>
-            tla: {{ teams['tla'] }} <br>
-            adress: {{ teams['adress'] }}<br>
-            website: {{ teams['website'] }} <br>
-    {% endfor %}
+
+<h1> Teamdetails for: {{ teamDataTransferObject.teamName }}</h1>
+
+    name : {{ teamDataTransferObject.teamShortName  }} <br>
+     abbreviation : {{ teamDataTransferObject.teamTla  }} <br>
+    adresse : {{ teamDataTransferObject.teamAddress  }} <br>
+    Website: {{ teamDataTransferObject.teamWebsite  }} <br>
+    Club Color: {{ teamDataTransferObject.teamClubColors  }} <br>
+    Stadium : {{ teamDataTransferObject.teamVenue  }} <br>
+
 </table>

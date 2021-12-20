@@ -38,7 +38,7 @@ class TableRepository
      * @return TableDataTransferObject []
      */
 
-    public function readTable(): array
+    public function readPlTable(): array
     {
 
         $table = file_get_contents(__DIR__ . '/../table.json', true);
