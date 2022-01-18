@@ -5,6 +5,7 @@ namespace App;
 
 interface ViewInterface
 {
-    public function render(string $template, array $context): v;
+    public function render(string $template, array $context);
     public function init():  void;
 }
+

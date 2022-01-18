@@ -34,7 +34,7 @@
 
     <h1>STANDINGS KURWA </h1>
 
-
+    <a href="../index.php"> BACK </a>
 
     <table style=" border-collapse: separate;
         border-spacing: 0.05cm">
@@ -54,7 +54,7 @@
             <tr>
 
                 <td>   {{ teams['position'] }}</td>
-                <td><a href='../index.php?page=league&team={{ teams['name'] }}'>{{ teams['name'] }}</a></td>
+                <td><a href='../index.php?page=league&team={{ teams['name'] }}&league={{ league }}'>{{ teams['name'] }}</a></td>
                 <td>{{ teams['points'] }}</td>
                 <td>{{ teams['wins'] }}</td>
                 <td>{{ teams['draws'] }}</td>

@@ -4,5 +4,6 @@ namespace App\Controller;
 
 interface ControllerInterface
 {
-    public function render(): void;
+    public function render(): string;
+
 }

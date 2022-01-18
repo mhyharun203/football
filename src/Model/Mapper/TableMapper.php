@@ -18,6 +18,7 @@ class TableMapper
 
         foreach ($table['standings'][0]['table'] as $column) {
 
+
             $tableDTO = new TableDataTransferObject();
             $tableDTO->setPoints($column['points']);
             $tableDTO->setName($column['team']['name']);

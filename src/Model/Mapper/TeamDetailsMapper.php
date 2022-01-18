@@ -19,16 +19,15 @@ class TeamDetailsMapper
     {
         $arrayTeamDTO = [];
 
-        foreach ($teamInfo as $finalTeamInfo) {
+        foreach ($teamInfo['teams'] as $finalTeamInfo) {
 
 
             $teamDTO = new TeamDataTransferObject();
 
-
             $teamDTO->setTeamName($finalTeamInfo['name']);
-            $teamDTO->setTeamShortName($finalTeamInfo['shortname']);
+            $teamDTO->setTeamShortName($finalTeamInfo['shortName']);
             $teamDTO->setTeamTla($finalTeamInfo['tla']);
-            $teamDTO->setTeamAddress($finalTeamInfo['adress']);
+            $teamDTO->setTeamAddress($finalTeamInfo['address']);
             $teamDTO->setTeamWebsite($finalTeamInfo['website']);
             $teamDTO->setTeamClubColors($finalTeamInfo['clubColors']);
             $teamDTO->setTeamVenue($finalTeamInfo['venue']);

@@ -19,26 +19,36 @@ class DisplayLeagueController implements ControllerInterface
         $this->view = $view;
     }
 
+    /**
+     *
+     */
 
-    public function render(): void
+    public function render(): string
 
     {
+
+
         $league = $_GET ['league'];
+
         $leagueList = [
-            'BL' => $this->tableRepository->readBlTable(),
-            'PL' => $this->tableRepository->readPlTable()];
+            'BL' => $this->tableRepository->readPLTable(),
+            'PL' => $this->tableRepository->readBLTable()];
 
 
         foreach ($leagueList as $key => $leagueInfo) {
-            if ($league === $key) {
+
+
+            if ($league !== $key) {
                 $this->view->init();
-                $this->view->render('table.twig', [
-                    'tableArray' => $this->getTableContent($leagueInfo)
+                return $this->view->render('table.twig', [
+                    'tableArray' => $this->getTableContent($leagueInfo),
+                    'league' => $league,
+
                 ]);
-
             }
-
         }
+
+        return '';
     }
 
 

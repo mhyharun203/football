@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Controller\DisplayTeamsDetailController;
+use App\Controller\OneTeamDetailController;
 use App\Controller\TableController;
 use App\Controller\TeamDetailController;
 use App\Model\Mapper\TableMapper;
@@ -19,17 +21,16 @@ class DependencyProvider implements DependencyProviderInterface
     {
 
 
-
         $container->set(TableMapper::class, new TableMapper());
         $container->set(TeamDetailsMapper::class, new TeamDetailsMapper());
+        $container->set(Api::class, new Api());
 
-        $teamDetailsMapper = new TeamDetailsMapper();
+
         $container->set(TableRepository::class, new TableRepository($container->get(TableMapper::class)));
-        $container->set(TeamRepository::class, new TeamRepository($teamDetailsMapper));
+        $container->set(TeamRepository::class, new TeamRepository($container->get(TeamDetailsMapper::class)));
 
         $container->set(Api::class, new Api());
         $container->set(TwigView::class, new TwigView());
-
-
+        $container->set(OneTeamDetailController::class, new OneTeamDetailController($container->get(TeamRepository::class), $container->get(TwigView::class)));
     }
 }

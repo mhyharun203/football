@@ -14,7 +14,6 @@ use App\Model\TeamRepository;
 use App\TwigView;
 use App\Controller\ChooseLeagueController;
 use App\Controller\DisplayLeagueController;
-use App\Controller\BundesLigaController;
 use Twig\Environment;
 
 
@@ -32,13 +31,15 @@ $twig->init();
 $controllerList = [
     '' => new ChooseLeagueController($container->get(TableRepository::class), $container->get(TwigView::class)),
     'DisplayLeague' => new DisplayLeagueController($container->get(TableRepository::class), $container->get(TwigView::class)),
-    'league' => new \App\Controller\OneTeamDetailController($container->get(TeamRepository::class), $container->get(TwigView::class))
+    'league' => $container->get(\App\Controller\OneTeamDetailController::class)
+
     ];
 
 $page = $_GET['page'] ?? '';
 
 foreach ($controllerList as $key => $controller) {
     if ($page === $key) {
-        $controller->render();
+      echo   $controller->render();
     }
 }
+

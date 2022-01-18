@@ -27,9 +27,9 @@ final class TwigView implements ViewInterface {
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function render(string $template, array $context): void
+    public function render(string $template, array $context): string
     {
-        echo $this->twig->render($template, $context);
+       return $this->twig->render($template, $context);
     }
 
 
