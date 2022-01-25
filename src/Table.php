@@ -6,6 +6,7 @@ namespace App;
 
 use App\Core\Api;
 use App\Model\Mapper\TableMapper;
+use App\Model\TableEntityManager;
 use App\Model\TableRepository;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -21,8 +22,8 @@ class Table
         $api = new Api();
         $rawTable = $api->getPlStandings();
         $tableMapper = new TableMapper;
-        $repository = new TableRepository($tableMapper);
-        $repository->savePLTable($rawTable);
+        $tableEntityManager = new TableEntityManager($tableMapper);
+        $tableEntityManager->savePLTable($rawTable);
         return $rawTable;
 
     }
@@ -33,8 +34,8 @@ class Table
         $api = new Api();
         $rawTable = $api->getBLStandings();
         $tableMapper = new TableMapper;
-        $repository = new TableRepository($tableMapper);
-        $repository->saveBlTable($rawTable);
+        $tableEntityManager = new TableEntityManager($tableMapper);
+        $tableEntityManager->saveBlTable($rawTable);
         return $rawTable;
 
     }
@@ -42,13 +43,11 @@ class Table
 
 }
 
-$c = new \App\Core\Api();
-$a = new \App\Table($c);
+$a = new \App\Table();
 $a->triggerApiForPL();
 
 
-$api = new Api();
-$Table = new Table($api);
+$Table = new Table();
 $Table->triggerApiForBL();
 
 

@@ -6,6 +6,7 @@ namespace App\Model;
 
 use App\Model\DTO\TeamDataTransferObject;
 use App\Model\Mapper\TeamDetailsMapper;
+use PDO;
 
 require __DIR__ . '/../../vendor/autoload.php';
 
@@ -19,62 +20,52 @@ class TeamRepository
         $this->teamDetailsMapper = $teamDetailsMapper;
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public function savePLTeamInformation($teamFinalArray)
-    {
-
-        $json = json_encode($teamFinalArray, JSON_PRETTY_PRINT);
-        file_put_contents(__DIR__ . '/../teamDetail.json', $json);
-        return $teamFinalArray;
-    }
-
-    public function saveBLTeamInformation($teamFinalArray)
-    {
-
-        $json = json_encode($teamFinalArray, JSON_PRETTY_PRINT);
-        file_put_contents(__DIR__ . '/../BundesLigaTeamDetail.json', $json);
-        return $teamFinalArray;
-    }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function readPLTeamInformation(): array
     {
+        $pdo = new PDO('mysql:host=127.0.0.1;port=3336;dbname=football', 'root', 'demo');
 
-        $teamDetail = file_get_contents(__DIR__ . '/../teamDetail.json');
-        $finalTable = json_decode($teamDetail, true);
-        return $this->teamDetailsMapper->mapToDTO($finalTable);
+        $query = $pdo->prepare("Select * FROM teamsInfo WHERE league = 'PremiereLeague'");
+        $query->execute();
+
+        $result = $query->fetchAll();
+        return $this->teamDetailsMapper->mapToDTO($result);
     }
-
 
     public function readBLTeamInformation(): array
     {
+        $pdo = new PDO('mysql:host=127.0.0.1;port=3336;dbname=football', 'root', 'demo');
 
-        $teamDetail = file_get_contents(__DIR__ . '/../BundesLigaTeamDetail.json');
-        $finalTable = json_decode($teamDetail, true);
-        return $this->teamDetailsMapper->mapToDTO($finalTable);
+        $query = $pdo->prepare("Select * FROM teamsInfo WHERE league = 'BundesLiga'");
+        $query->execute();
+
+        $result = $query->fetchAll();
+        return $this->teamDetailsMapper->mapToDTO($result);
     }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    /**
-     * @param string $name
-     *
-     * @return array
-     */
-    public function getOneTeamByName(string $name, string $league): ?TeamDataTransferObject
+
+    public function getOneTeamByName(string $name): TeamDataTransferObject
     {
-        $teams = $this->readPLTeamInformation();
+        $pdo = new PDO('mysql:host=127.0.0.1;port=3336;dbname=football', 'root', 'demo');
 
-        if ($league === 'BL') {
-            $teams = $this->readBLTeamInformation();
-        }
+        $query = $pdo->prepare("Select * FROM teamsInfo WHERE Name = :name");
+        $query->execute(
+            [
 
-        $teamDataTransferObject = new TeamDataTransferObject();
-        foreach ($teams as $team) {
-            if ($team->getTeamName() === $name) {
-                $teamDataTransferObject = $team;
-            }
-        }
-        return $teamDataTransferObject;
+                'name'=> $name
+
+            ]
+        );
+
+
+
+        $result = $query->fetch();
+        $mapper = new TeamDetailsMapper();
+        return $mapper->mapToDTO($result);
     }
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

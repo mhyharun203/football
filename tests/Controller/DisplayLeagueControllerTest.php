@@ -1,6 +1,6 @@
 <?php
 
-
+namespace AppTests\Controller;
 use App\Controller\ChooseLeagueController;
 use App\Model\TableRepository;
 use App\TwigView;

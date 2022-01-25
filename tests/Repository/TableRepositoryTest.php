@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 
-namespace AppTest;
+namespace AppTests\Repository;
 
 use App\Model\Mapper\TableMapper;
 use App\Model\TableRepository;

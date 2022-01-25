@@ -16,16 +16,15 @@ class TableMapper
     {
         $arraytableDTO = [];
 
-        foreach ($table['standings'][0]['table'] as $column) {
-
+        foreach ($table as $column) {
 
             $tableDTO = new TableDataTransferObject();
             $tableDTO->setPoints($column['points']);
-            $tableDTO->setName($column['team']['name']);
+            $tableDTO->setName($column['team']);
             $tableDTO->setPosition($column['position']);
-            $tableDTO->setWins($column['won']);
-            $tableDTO->setLoses($column['lost']);
-            $tableDTO->setDraws($column['draw']);
+            $tableDTO->setWins($column['wins']);
+            $tableDTO->setLoses($column['loses']);
+            $tableDTO->setDraws($column['draws']);
             $arraytableDTO[] = $tableDTO;
         }
         return $arraytableDTO;

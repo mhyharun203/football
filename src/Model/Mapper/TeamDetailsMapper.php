@@ -13,27 +13,19 @@ class TeamDetailsMapper
 
     /**
      * @param array $finalTeamInfo
-     * @return TeamDataTransferObject[]
+     * @return TeamDataTransferObject
      */
-    public function mapToDTO(array $teamInfo): array
+    public function mapToDTO(array $teamInfo): TeamDataTransferObject
     {
-        $arrayTeamDTO = [];
+        $teamDTO = new TeamDataTransferObject();
 
-        foreach ($teamInfo['teams'] as $finalTeamInfo) {
+        $teamDTO->setTeamName($teamInfo['shortName']);
+        $teamDTO->setTeamShortName($teamInfo['tla']);
+        $teamDTO->setTeamAddress($teamInfo['adresse']);
+        $teamDTO->setTeamWebsite($teamInfo['website']);
+        $teamDTO->setTeamVenue($teamInfo['venue']);
 
 
-            $teamDTO = new TeamDataTransferObject();
-
-            $teamDTO->setTeamName($finalTeamInfo['name']);
-            $teamDTO->setTeamShortName($finalTeamInfo['shortName']);
-            $teamDTO->setTeamTla($finalTeamInfo['tla']);
-            $teamDTO->setTeamAddress($finalTeamInfo['address']);
-            $teamDTO->setTeamWebsite($finalTeamInfo['website']);
-            $teamDTO->setTeamClubColors($finalTeamInfo['clubColors']);
-            $teamDTO->setTeamVenue($finalTeamInfo['venue']);
-
-            $arrayTeamDTO[] = $teamDTO;
-        }
-        return $arrayTeamDTO;
+        return $teamDTO;
     }
 }

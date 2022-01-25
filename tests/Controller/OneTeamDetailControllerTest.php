@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 
-namespace AppTest;
+namespace AppTests\Controller;
 
 use App\Controller\ChooseLeagueController;
 use App\Controller\OneTeamDetailController;

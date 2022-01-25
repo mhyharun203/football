@@ -8,6 +8,7 @@ use App\Controller\TableController;
 use App\Controller\TeamDetailController;
 use App\Model\Mapper\TableMapper;
 use App\Model\Mapper\TeamDetailsMapper;
+use App\Model\TableEntityManager;
 use App\Model\TableRepository;
 use App\Model\TeamRepository;
 use App\TwigView;
@@ -24,10 +25,11 @@ class DependencyProvider implements DependencyProviderInterface
         $container->set(TableMapper::class, new TableMapper());
         $container->set(TeamDetailsMapper::class, new TeamDetailsMapper());
         $container->set(Api::class, new Api());
-
+        $container->set(TableEntityManager::class, new TableEntityManager($container->get(TableMapper::class)));
 
         $container->set(TableRepository::class, new TableRepository($container->get(TableMapper::class)));
         $container->set(TeamRepository::class, new TeamRepository($container->get(TeamDetailsMapper::class)));
+        $container->set(PdoConnect::class, new PdoConnect());
 
         $container->set(Api::class, new Api());
         $container->set(TwigView::class, new TwigView());

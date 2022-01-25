@@ -7,7 +7,10 @@ use App\Core\Api;
 use App\Core\ApiInterface;
 use App\Core\Container;
 use App\Core\DependencyProvider;
+use App\Model\Mapper\TableMapper;
 use App\Model\Mapper\TeamDetailsMapper;
+use App\Model\TableEntityManager;
+use App\Model\TeamEntityManager;
 use App\Model\TeamRepository;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -17,57 +20,35 @@ class TeamDetail
 {
 
 
-    private TeamRepository $teamRepository;
-
-    public function __construct(TeamRepository $teamRepository)
-    {
-
-        $this->teamRepository = $teamRepository;
-    }
-
-
     public function triggerPLApi()
     {
-        $container = new Container();
-        $dependencyProvider = new DependencyProvider();
-        $dependencyProvider->provideDependencies($container);
+        $api = new Api();
+        $rawTable = $api->getPLTeams();
+        $teamDetialsMapper = new TeamDetailsMapper();
+        $tableEntityManager = new TeamEntityManager($teamDetialsMapper);
+        $tableEntityManager->savePlTeamInformation($rawTable);
+        return $rawTable;
 
-        $api = $container->get(Api::class);
-
-        $api->getPLTeams();
-        $rawTeamInformation = $api->getPLTeams();
-        $this->teamRepository->savePLTeamInformation($rawTeamInformation);
-        dump($rawTeamInformation);
-        return $rawTeamInformation;
     }
 
 
     public function triggerBLApi()
     {
-        $container = new Container();
-        $dependencyProvider = new DependencyProvider();
-        $dependencyProvider->provideDependencies($container);
-
-        $api = $container->get(Api::class);
-
-
-        $api->getBLTeams();
-        $rawTeamInformation = $api->getBLTeams();
-        $this->teamRepository->saveBLTeamInformation($rawTeamInformation);
-        return $rawTeamInformation;
+        $api = new Api();
+        $rawTable = $api->getBLTeams();
+        $teamDetailsMapper = new TeamDetailsMapper();
+        $teamEntityManager = new TeamEntityManager($teamDetailsMapper);
+        $teamEntityManager->saveBlTeamInformation($rawTable);
+        return $rawTable;
 
     }
 
 
 }
 
-$teamMapper = new TeamDetailsMapper();
-$apiPL = new \App\Core\Api();
-$teamRepository = new TeamRepository($teamMapper);
-$teamDetailPL = new \App\TeamDetail($teamRepository,$apiPL);
-$teamDetailPL->triggerBLApi();
+$a = new \App\TeamDetail();
+$a->triggerPLApi();
 
 
-
-$teamDetailBL = new \App\TeamDetail($teamRepository,$apiPL);
-$teamDetailBL->triggerPLApi();
+$Table = new TeamDetail();
+$Table->triggerBlApi();

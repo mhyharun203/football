@@ -64,8 +64,6 @@ class TeamDataTransferObject
     }
 
 
-
-
     public function getTeamWebsite(): string
     {
         return $this->teamWebsite;
@@ -76,9 +74,6 @@ class TeamDataTransferObject
     {
         $this->teamWebsite = $teamWebsite;
     }
-
-
-
 
 
     public function getTeamClubColors(): string

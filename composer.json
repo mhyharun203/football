@@ -10,6 +10,13 @@
     "symfony/var-dumper": "^6.0"
   },
   "require": {
-    "twig/twig": "^3.3"
+    "twig/twig": "^3.3",
+    "ext-pdo": "*",
+    "ext-mysqli": "*"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AppTests\\": "tests/"
+    }
   }
 }
