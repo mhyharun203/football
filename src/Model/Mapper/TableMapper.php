@@ -14,22 +14,22 @@ class TableMapper
      */
     public function mapToDTO(array $table): array
     {
-        $arraytableDTO = [];
 
-        foreach ($table as $column) {
 
+        foreach ($table as $tableData) {
             $tableDTO = new TableDataTransferObject();
-            $tableDTO->setPoints($column['points']);
-            $tableDTO->setName($column['team']);
-            $tableDTO->setPosition($column['position']);
-            $tableDTO->setWins($column['wins']);
-            $tableDTO->setLoses($column['loses']);
-            $tableDTO->setDraws($column['draws']);
+            $tableDTO->setPoints($tableData['points']);
+            $tableDTO->setName($tableData['team']);
+            $tableDTO->setPosition($tableData['position']);
+            $tableDTO->setWins($tableData['wins']);
+            $tableDTO->setLoses($tableData['loses']);
+            $tableDTO->setDraws($tableData['draws']);
             $arraytableDTO[] = $tableDTO;
+
+
         }
         return $arraytableDTO;
     }
-
 }
 
 

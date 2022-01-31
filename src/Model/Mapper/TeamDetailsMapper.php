@@ -17,8 +17,9 @@ class TeamDetailsMapper
      */
     public function mapToDTO(array $teamInfo): TeamDataTransferObject
     {
-        $teamDTO = new TeamDataTransferObject();
 
+
+        $teamDTO = new TeamDataTransferObject();
         $teamDTO->setTeamName($teamInfo['shortName']);
         $teamDTO->setTeamShortName($teamInfo['tla']);
         $teamDTO->setTeamAddress($teamInfo['adresse']);

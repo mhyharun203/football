@@ -26,7 +26,7 @@ class TeamEntityManager
         $teams = ($teamFinalArray['teams']);
 
         foreach ($teams as $teamDetails) {
-            dump($teamDetails);
+
 
             $exists = 'SELECT * from teamsInfo WHERE name = :name';
             $stmt2 = $pdo->prepare($exists);

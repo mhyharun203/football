@@ -25,8 +25,8 @@ class TeamDetail
         $api = new Api();
         $rawTable = $api->getPLTeams();
         $teamDetialsMapper = new TeamDetailsMapper();
-        $tableEntityManager = new TeamEntityManager($teamDetialsMapper);
-        $tableEntityManager->savePlTeamInformation($rawTable);
+        $teamEntityManager = new TeamEntityManager($teamDetialsMapper);
+        $teamEntityManager->savePlTeamInformation($rawTable);
         return $rawTable;
 
     }

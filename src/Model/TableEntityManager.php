@@ -92,8 +92,7 @@ class TableEntityManager {
                         'lost' => $team['lost']
                     ]
                 );
-            }else
-            {
+            } else {
                 $updt = "UPDATE teamsTable SET points = :points WHERE Team = :name";
                 $updtstmt = $pdo->prepare($updt);
                 $updtstmt->execute(

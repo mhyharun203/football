@@ -22,15 +22,25 @@ class PdoConnect
     }
 
 
-    public function fetchAll()
+    public function fetchAll($queryStatement)
     {
         $pdo = $this->pdo;
 
-        $query = $pdo->prepare("Select * FROM teamsTable WHERE liga = 'bundesLiga'");
+        $query = $pdo->prepare($queryStatement);
         $query->execute();
 
         $result = $query->fetchAll();
         return $result;
     }
+
+    public function fetch($queryStatement,array $bindings)
+    {
+        $pdo = $this->pdo;
+        $query = $pdo->prepare($queryStatement);
+        $query->execute($bindings);
+
+        $result = $query->fetch();
+        return $result;
+}
 }
 

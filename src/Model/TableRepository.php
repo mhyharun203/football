@@ -32,18 +32,20 @@ class TableRepository
     public function readPlTable(): array
     {
 
-        $pdo = new PDO('mysql:host=127.0.0.1;port=3336;dbname=football', 'root', 'demo');
-        $query = $pdo->prepare("Select * FROM teamsTable WHERE liga = 'PremiereLeague'");
-        $query->execute();
-        $result = $query->fetchAll();
+        $queryStatement =   "Select * FROM teamsTable WHERE liga = 'PremiereLeague'";
+        $pdo = new PdoConnect();
+        $result = $pdo->fetchAll($queryStatement);
+
+
         return $this->tableMapper->mapToDTO($result);
 
     }
 
     public function readBlTable(): array
     {
+        $queryStatement =   "Select * FROM teamsTable WHERE liga = 'bundesLiga'";
         $pdo = new PdoConnect();
-        $result = $pdo->fetchAll();
+        $result = $pdo->fetchAll($queryStatement);
 
 
         return $this->tableMapper->mapToDTO($result);

@@ -23,11 +23,11 @@ class OneTeamDetailController implements ControllerInterface
     public function render(): string
     {
         $team = $_GET['team'];
-        $league = $_GET['league'];
+
 
         $this->view->init();
         return $this->view->render('teamDetail.twig', [
-            'teamDataTransferObject' => (array)$this->teamRepository->getOneTeamByName($team, $league),
+            'teamDataTransferObject' => (array)$this->teamRepository->getOneTeamByName($team),
         ]);
     }
 }
